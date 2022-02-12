@@ -1,11 +1,11 @@
 from letter_types import *
 
-with open('google_most_common.txt', 'r') as f:
+with open('wordle_dict.txt', 'r') as f:
     words_ = f.read().splitlines()
 
-grey = ['n', 'i', 'l', 'h', 'r']
-yellow = []
-green = {0:'d'}
+grey = ['o', 'h', 'e', 'd', 'i', 'y']
+yellow = ['a', 'r']
+green = {1:'l', 2:'t'}
 
 for word in words_:
     if len(grey) > 0 and len(yellow) > 0 and len(green) > 0:
