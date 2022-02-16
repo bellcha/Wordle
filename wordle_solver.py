@@ -3,9 +3,9 @@ from letter_types import *
 with open('wordle_dict.txt', 'r') as f:
     words_ = f.read().splitlines()
 
-grey = ['c', 'n', 'e']
-yellow = ['o']
-green = {1:'r', 0:'a'}
+grey = ['o', 't', 'h', 'e', 'r', 'n', 'i', 's']
+yellow = []
+green = {3:'l', 1:'a'}
 
 for word in words_:
     if len(grey) > 0 and len(yellow) > 0 and len(green) > 0:
