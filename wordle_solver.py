@@ -3,10 +3,10 @@ from letter_types import *
 with open('wordle_dict.txt', 'r') as f:
     words_ = f.read().splitlines()
 
-grey = ['g', 'a', 'i', 's', 'c', 'r', 'a', 'n']
-yellow = ['b']
-green = {1:'l', 2:'o',4:'e'}
-guesses = ['nails', 'crane', 'globe']
+grey = ['n', 'a', 'i', 'l', 'g', 'b', 'e', 'r', 'm']
+yellow = []
+green = {0:'f', 1:'o', 4:'s'}
+guesses = ['snail', 'globe', 'forms']
 
 for word in words_:
     if len(grey) > 0 and len(yellow) > 0 and len(green) > 0:
