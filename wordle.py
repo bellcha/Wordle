@@ -1,15 +1,15 @@
 
-def grey_letters(word, letters):
+def grey_letters(word: str, letters: list) -> bool:
     w = list(word)
     check =  any(letter in w for letter in letters)
     return check
 
-def yellow_letters(word, letters):
+def yellow_letters(word: str, letters: list) -> bool:
     w = list(word)
     check =  all(letter in w for letter in letters)
     return check
 
-def green_letters(word, letters):
+def green_letters(word: str, letters: dict) -> bool:
     check = []
     w = list(word)
     for key, value in letters.items():
@@ -20,7 +20,7 @@ def green_letters(word, letters):
     
     return all(check)
 
-def wordle(grey, yellow, green, guesses):
+def wordle(grey: list, yellow: list, green: dict, guesses: list):
 
     with open('wordle_dict.txt', 'r') as f:
         _words = f.read().splitlines()
