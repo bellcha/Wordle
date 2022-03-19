@@ -1,33 +1,66 @@
-from letter_types import *
+from os import system, name
+from wordle import wordle
 
-with open('wordle_dict.txt', 'r') as f:
-    words_ = f.read().splitlines()
+def main():
+    grey = []
+    yellow = []
+    green = {}
+    guesses = []
 
-grey = ['n', 'a', 'i', 'l', 'g', 'b', 'e', 'r', 'm']
-yellow = []
-green = {0:'f', 1:'o', 4:'s'}
-guesses = ['snail', 'globe', 'forms']
-
-for word in words_:
-    if len(grey) > 0 and len(yellow) > 0 and len(green) > 0:
-        if not grey_letters(word, grey) and yellow_letters(word, yellow) and green_letters(word, green):
-            if word not in guesses:
-                print(word)
-    
-    elif len(grey) > 0 and len(yellow) > 0 and len(green) == 0:
-        if not grey_letters(word, grey) and yellow_letters(word, yellow):
-            if word not in guesses:
-                print(word)
-    
-    elif len(yellow) > 0 and len(green) > 0 and len(grey) == 0:
-        if yellow_letters(word, yellow) and green_letters(word, green):
-            if word not in guesses:
-                print(word)
-    
-    elif len(grey) > 0 and len(green) > 0 and len(yellow) == 0:
-        if not grey_letters(word, grey) and green_letters(word, green):
-            if word not in guesses:
-                print(word)
-    
+    #Clear Console Screen
+    if name == 'nt':
+        system('cls')
     else:
-        print('Minimum criteria not met for results')
+        system('clear')
+
+    print("""
+    **************************************************************
+    *                                                            *
+    *                      WORDLE SOLVER                         *
+    *                           by                               *
+    *                      Bradley Bell                          *
+    *                                                            *    
+    **************************************************************
+    """)
+
+    while True:
+        
+        grey_input = str(input('Enter Grey Letter(s) or hit Enter: '))
+
+        if grey_input != '':
+            for g in grey_input.split(','):
+                grey.append(g)
+
+        yellow_input = str(input('Enter Yellow Letters or hit Enter: '))
+
+        if yellow_input != '':
+            for y in yellow_input.split(','):
+                yellow.append(y)
+        
+        green_input = str(input('Enter Green Letter(s) or hit Enter: '))
+
+        if green_input != '':
+            for g in green_input.split(','):
+                k = int(g[0])
+                green[k] = g[2]
+
+        guesses_input = str(input('Enter Guess or hit Enter: '))
+
+        if len(guesses_input) != '':
+            for guess in guesses_input.split(','):
+                guesses.append(guess)
+        
+        print('\nPossible Solutions: ')
+
+        wordle(grey, yellow, green, guesses)
+
+        print(f'\nGrey Letters: {grey}\nYellow Letters: {yellow}\nGreen Letters: {green}\nGuessed Words: {guesses}\n')
+
+        continue_game = input('Continue game? ')
+
+        if continue_game in ('no', 'n', 'No', 'NO'):
+            print('Goodbye!\n')
+            break
+
+if __name__ == '__main__':
+    main()
